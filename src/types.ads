@@ -6,8 +6,9 @@ package types is
    type step is record
       succ : Integer;
       next : top_link;
+      count : Integer;
+      top : top_link;
    end record;
-
 
    type step_array is array(Positive range <>) of step;
 
