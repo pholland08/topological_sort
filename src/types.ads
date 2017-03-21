@@ -1,13 +1,16 @@
 package types is
 
-   type step;
-   type top_link is access step;
+   type wait_task;
+   type wait_task_link is access wait_task;
+
+   type wait_task is record
+      succ : Integer := 0;
+      next : wait_task_link := null;
+   end record;
 
    type step is record
-      succ : Integer;
-      next : top_link;
-      count : Integer;
-      top : top_link;
+      count : Integer := 0;
+      wait_list : wait_task_link := null;
    end record;
 
    type step_array is array(Positive range <>) of step;
